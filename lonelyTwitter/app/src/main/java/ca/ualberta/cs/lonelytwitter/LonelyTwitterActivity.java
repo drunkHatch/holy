@@ -20,6 +20,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 // file -> project sturt -> dependencies -> library dependencies add GSON successfully added!
+// git remote -v
+// git remote add my https
+// git push my w18Thursday
+// git set-url origin httpa~~~~
 
 public class LonelyTwitterActivity extends Activity {
 
@@ -40,6 +44,8 @@ public class LonelyTwitterActivity extends Activity {
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
+		Button clearButton = (Button) findViewById(R.id.clear);
+
 
 
 
@@ -51,6 +57,22 @@ public class LonelyTwitterActivity extends Activity {
 
 				Tweet tweet = new NormalTweet(text);
 				tweetList.add(tweet);
+
+				adapter.notifyDataSetChanged();
+
+				saveInFile();
+				//finish();
+
+			}
+		});
+		clearButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				setResult(RESULT_OK);
+				//String text = bodyText.getText().toString();
+
+				//Tweet tweet = new NormalTweet(text);
+				tweetList.clear();
 
 				adapter.notifyDataSetChanged();
 
